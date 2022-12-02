@@ -16,7 +16,7 @@ Then open http://127.0.0.1:8500 once or multiple times in your browser and chat 
   - Frontend & Backend uses [Go-App](https://github.com/maxence-charriere/go-app).
   - Build tooling made with [Mage](https://magefile.org/).
 - The frontend is a PWA and can be installed on your phone or desktop. It runs in the browser as WASM code with a service-worker.
-- We are using an embedded NATS-Server in the backend to offer two services:
+- We are using an embedded NATS-Server in the backend to offer three services:
   - [Govatar](https://github.com/o1egl/govatar) image (jpeg / random / female).
   - Chat broker (3 lines of code + error handling = 10 lines).
   - (New) Each PWA has a echo "req" service under the subject "echo.<name of the user>". Like "echo.late-meadow" in our example picture. An example command-line is shown in the site.
