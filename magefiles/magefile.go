@@ -35,7 +35,7 @@ func buildApp() error {
 		return nil
 	}
 	fmt.Println("> Building App...")
-	return sh.RunV(goCompiler, "build", "-tags", "desktop", "-o", appExecutable, appDir)
+	return sh.RunV(goCompiler, "build", "-o", appExecutable, appDir)
 }
 
 func BuildWasm() error {
