@@ -2,16 +2,18 @@ package main
 
 import (
 	"fmt"
+	"runtime"
+
 	"github.com/magefile/mage/mg"
 	"github.com/magefile/mage/sh"
 	"github.com/magefile/mage/target"
-	"runtime"
 )
 
 var appExecutable = "bin/go-nats-app"
 var appDir = "."
 
 const goCompiler = "go"
+const gopherjsCompiler = "gopherjs"
 
 var appGlobs = []string{
 	"magefiles/magefile.go",
@@ -38,21 +40,20 @@ func buildApp() error {
 	return sh.RunV(goCompiler, "build", "-o", appExecutable, appDir)
 }
 
-func BuildWasm() error {
-	changes, err := target.Glob("web/app.wasm", appGlobs...)
+func BuildFrontend() error {
+	changes, err := target.Glob("web/app.js", appGlobs...)
 	if err != nil {
 		return err
 	}
 	if !changes {
 		return nil
 	}
-	fmt.Println("> Building WASM...")
-	return sh.RunWithV(map[string]string{"GOOS": "js", "GOARCH": "wasm"}, goCompiler, "build", "-o",
-		"web/app.wasm", appDir)
+	fmt.Println("> Building Frontend...")
+	return sh.RunV(gopherjsCompiler, "build", "-m", "-o", "web/app.js", appDir)
 }
 
 func Build() error {
-	mg.Deps(BuildWasm)
+	mg.Deps(BuildFrontend)
 	return buildApp()
 }
 
