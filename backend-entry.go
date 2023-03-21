@@ -1,12 +1,13 @@
 // Our empty version of the httpServer for usage with the wasm target
 // this way we will not include any of the related code
-//go:build !wasm
+//go:build !js
 
 package main
 
 import (
-	"github.com/maxence-charriere/go-app/v9/pkg/app"
 	"go-nats-app/back"
+
+	"github.com/maxence-charriere/go-app/v9/pkg/app"
 )
 
 type empty struct{ app.Compo }
