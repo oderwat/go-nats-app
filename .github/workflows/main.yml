@@ -1,4 +1,4 @@
-name: make
+name: mage
 
 concurrency:
   group: ${{ github.workflow }}-${{ github.ref }}
