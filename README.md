@@ -17,9 +17,9 @@ Then open http://127.0.0.1:8500 once or multiple times in your browser and chat 
   * Build tooling made with [Mage](https://magefile.org/).
 * The frontend is a PWA and can be installed on your phone or desktop. It runs in the browser as WASM code with a service-worker.
 * We are using an embedded NATS-Server in the backend to offer three services:
-  * [Govatar](https://github.com/o1egl/govatar) image (jpeg / random / female).
+  * [Govatar](https://github.com/o1egl/govatar) image (JPEG / random / female).
   * Chat broker (3 lines of code + error handling = 10 lines).
-  * (New) Each PWA has a echo "req" service under the subject "echo.". Like "echo.late-meadow" in our example picture. An example command-line is shown in the site.
+  * (New) Each PWA has an echo "req" service under the subject "echo.". Like "echo.late-meadow" in our example picture. An example command-line is shown in the site.
 * We use the original nats.go client in the frontend.
 * Go-App code is smaller when building WASM and normal code separately.
 * We compress the WASM code on the fly.
@@ -27,14 +27,14 @@ Then open http://127.0.0.1:8500 once or multiple times in your browser and chat 
 
 ### What does not work:
 
-* This will not work with TLS (`wss://`) with before the next release of [Nats.go](https://github.com/nats-io/nats.go) (after 1.20.0). If you need TLS for the websocket you can use `go get https://github.com/nats-io/nats.go@main` which shoud work for that. The code in the demo does contain everything needed though (implementation of `SkipTLSHandshake()` on the `CustomDialer`).
-* The IPs and ports are hardcoded and as everything binds to localhost it will not work behind reverse proxies or through tunnels like [sish](https://github.com/antoniomika/sish) or ngrok.
-* a lot more. It is just a proof of concept / demo.
+* This will not work with TLS (`wss://`) with before the next release of [Nats.go](https://github.com/nats-io/nats.go) (after 1.20.0). If you need TLS for the web socket you can use `go get https://github.com/nats-io/nats.go@main` which should work for that. The code in the demo does contain everything needed though (implementation of `SkipTLSHandshake()` on the `CustomDialer`).
+* The IPs and ports are hard-coded and as everything binds to localhost it will not work behind reverse proxies or through tunnels like [sish](https://github.com/antoniomika/sish) or ngrok.
+* A lot more. It is just a proof of concept / demo.
 
 ### Disclaimer
 
 * We do not care what you do with the code as long as you do not bug us or destroy humanity with it :)
-* This uses the MIT Licence and is as it is what it is.
+* This uses the MIT License and is as it is what it is.
 * Parts of the code were quickly grabbed from other internal prototypes or written without much though. It is most likely full of bugs :)
 
 ### Greetings
