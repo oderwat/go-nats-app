@@ -30,6 +30,7 @@ Then open http://127.0.0.1:8500 once or multiple times in your browser and chat 
 * This will not work with TLS (`wss://`) with before the next release of [Nats.go](https://github.com/nats-io/nats.go) (after 1.20.0). If you need TLS for the web socket you can use `go get https://github.com/nats-io/nats.go@main` which should work for that. The code in the demo does contain everything needed though (implementation of `SkipTLSHandshake()` on the `CustomDialer`).
 * The IPs and ports are hard-coded and as everything binds to localhost it will not work behind reverse proxies or through tunnels like [sish](https://github.com/antoniomika/sish) or ngrok.
 * A lot more. It is just a proof of concept / demo.
+* [#second-tab](page-1.md#second-tab "mention")
 
 ### Disclaimer
 
