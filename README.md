@@ -10,7 +10,7 @@ Then open http://127.0.0.1:8500 once or multiple times in your browser and chat 
 
 ![preview](.gitbook/assets/readme-image.jpg)
 
-### Features of this demo:
+### Features of this demo
 
 * There is no java-script! Everything is Go code.
   * Frontend & Backend uses [Go-App](https://github.com/maxence-charriere/go-app).
@@ -25,7 +25,7 @@ Then open http://127.0.0.1:8500 once or multiple times in your browser and chat 
 * We compress the WASM code on the fly.
 * You can run the embedded nats-server as leaf-node of a cluster (that is what we do in another proof of concept).
 
-### What does not work:
+### What does not work?
 
 * This will not work with TLS (`wss://`) with before the next release of [Nats.go](https://github.com/nats-io/nats.go) (after 1.20.0). If you need TLS for the web socket you can use `go get https://github.com/nats-io/nats.go@main` which should work for that. The code in the demo does contain everything needed though (implementation of `SkipTLSHandshake()` on the `CustomDialer`).
 * The IPs and ports are hard-coded and as everything binds to localhost it will not work behind reverse proxies or through tunnels like [sish](https://github.com/antoniomika/sish) or ngrok.
