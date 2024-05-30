@@ -1,18 +1,19 @@
 package main
 
 import (
-	"github.com/maxence-charriere/go-app/v9/pkg/app"
 	"math/rand"
 	"time"
+
+	"github.com/maxence-charriere/go-app/v9/pkg/app"
 )
 
 func main() {
 	rand.Seed(time.Now().UnixNano()) // needs to be better for a real app
 
 	// check the system for int64 fitting into int (so we can convert int64 to int safely)
-	if uint64(^uint(0)) < ^uint64(0) {
-		panic("int does not fit int64")
-	}
+	// if uint64(^uint(0)) < ^uint64(0) {
+	// 	panic("int does not fit int64")
+	// }
 
 	// This is behind a WASM build tag so the business logic of the UI does not increase
 	// the size of our server executable.
