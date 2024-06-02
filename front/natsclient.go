@@ -3,7 +3,7 @@ package front
 import (
 	"context"
 	"fmt"
-	"github.com/maxence-charriere/go-app/v9/pkg/app"
+	"github.com/maxence-charriere/go-app/v10/pkg/app"
 	"github.com/nats-io/nats.go"
 	"net"
 	"nhooyr.io/websocket"

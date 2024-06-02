@@ -2,7 +2,7 @@ package front
 
 import (
 	"github.com/goombaio/namegenerator"
-	"github.com/maxence-charriere/go-app/v9/pkg/app"
+	"github.com/maxence-charriere/go-app/v10/pkg/app"
 	"github.com/nats-io/nats.go"
 	"nhooyr.io/websocket"
 	"strconv"
@@ -48,7 +48,7 @@ func (uc *appControl) OnMount(ctx app.Context) {
 			app.Logf("Native Go Connect did fail: %#v", err)
 			return
 		}
-		app.Log("Nats connected through websocket and netConn wrapper")
+		app.Log("Nats connected through websocket and netConn wrapper!")
 		// now we add a subscription to the chat.room
 		// Subscribe to the subject
 		_, err = uc.nc.Subscribe("chat.room", func(msg *nats.Msg) {
@@ -86,8 +86,7 @@ func (uc *appControl) OnMount(ctx app.Context) {
 				uc.echoCount++
 			})
 		})
-
-		uc.Update()
+		ctx.Update()
 	}()
 
 	app.Window().GetElementByID("inp").Call("focus")
@@ -146,7 +145,19 @@ func (uc *appControl) Render() app.UI {
 }
 
 func Create() {
-	app.RouteWithRegexp("/.*", &appControl{})
+	app.RouteWithRegexp("/.*", app.NewZeroComponentFactory(&appControl{}))
+	// add a very simple update checker that checks for updates every 5 seconds
+	// this lets us modify the code and restart the server more easily
+	// For production this should be changed to a longer interval.
+	intervalUpdater(time.Second * 5)
+}
+
+func intervalUpdater(delay time.Duration) {
+	time.AfterFunc(delay, func() {
+		app.Log("checking for update")
+		app.TryUpdate()
+		intervalUpdater(delay)
+	})
 }
 
 type WasmNatsConnectionWrapper struct {

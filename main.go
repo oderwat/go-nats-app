@@ -1,7 +1,7 @@
 package main
 
 import (
-	"github.com/maxence-charriere/go-app/v9/pkg/app"
+	"github.com/maxence-charriere/go-app/v10/pkg/app"
 	"math/rand"
 	"time"
 )
@@ -25,18 +25,17 @@ func main() {
 	// I declare this here because of the "logic" to find it in
 	// the backend code still is a mindbender for me :)
 	ah := &app.Handler{
-		Name:               "Go-Nats-App",
-		Lang:               "de",
-		Author:             "Hans Raaf - METATEXX GmbH",
-		Title:              "Go Nats App",
-		Description:        "NATS in a PWA",
-		Image:              "/web/logo-512.png",
-		LoadingLabel:       "Loading...",
-		AutoUpdateInterval: 5 * time.Second, // so we do not need to refresh the browser tabs while experimenting
+		Name:         "Go-Nats-App",
+		Lang:         "de",
+		Author:       "Hans Raaf - METATEXX GmbH",
+		Title:        "Go Nats App",
+		Description:  "NATS in a PWA",
+		Image:        "/web/logo-512.png",
+		LoadingLabel: "Loading...",
 		Icon: app.Icon{
-			Default:    "/web/logo-192.png",
-			Large:      "/web/logo-512.png",
-			AppleTouch: "/web/logo-192.png",
+			Default:  "/web/logo-192.png",
+			Large:    "/web/logo-512.png",
+			Maskable: "/web/logo-192.png",
 		},
 		Styles: []string{
 			"/web/index.css",
