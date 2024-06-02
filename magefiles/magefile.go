@@ -31,6 +31,7 @@ func buildApp() error {
 	if err != nil {
 		return err
 	}
+	changes = true
 	if !changes {
 		return nil
 	}

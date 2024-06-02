@@ -5,7 +5,7 @@
 package main
 
 import (
-	"github.com/maxence-charriere/go-app/v9/pkg/app"
+	"github.com/maxence-charriere/go-app/v10/pkg/app"
 	"go-nats-app/back"
 )
 
@@ -25,7 +25,7 @@ func Front() {
 	// is not covered results in a (raw) 404 error from the server.
 
 	// For the Skelly demo app, we handle all routes in the frontend itself
-	app.RouteWithRegexp("/.*", &empty{})
+	app.RouteWithRegexp("/.*", app.NewZeroComponentFactory(&empty{}))
 }
 
 func Back(ah *app.Handler) {
